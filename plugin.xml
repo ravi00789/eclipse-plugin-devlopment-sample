@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="com.myfirst.example.category1"
+            name="Drop Down Example">
+      </category>
+      <command
+            categoryId="com.myfirst.example.category1"
+            defaultHandler="com.myfirst.example.internal.DropHandler"
+            id="com.myfirst.example.command1"
+            name="My Drop">
+         <commandParameter
+               id="com.myfirst.example.msg"
+               name="Message"
+               optional="true">
+         </commandParameter>
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:com.myfirst.example.toolbar.command1">
+         <command
+               commandId="com.myfirst.example.command1"
+               label="Message Dialog"
+               style="push">
+            <parameter
+                  name="com.myfirst.example.msg"
+                  value="Hello">
+            </parameter>
+         </command>
+         <separator
+               name="additions"
+               visible="true">
+         </separator>
+         <command
+               commandId="com.myfirst.example.command1"
+               label="Title Area Dialog"
+               style="push">
+            <parameter
+                  name="com.myfirst.example.msg"
+                  value="Title">
+            </parameter>
+         </command>
+         <command
+               commandId="com.myfirst.example.command1"
+               label="Work Space"
+               style="push">
+            <parameter
+                  name="com.myfirst.example.msg"
+                  value="workspace">
+            </parameter>
+         </command>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="com.myfirst.example.toolbar2">
+            <command
+                  commandId="com.myfirst.example.command1"
+                  id="com.myfirst.example.toolbar.command1"
+                  style="pulldown"
+                  tooltip="first dropdown">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="com.myfirst.example.command1"
+            icon="icons/favicon.gif">
+      </image>
+   </extension>
+
+</plugin>
